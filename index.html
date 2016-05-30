@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hexies</title>
+  </head>
+  <body>
+    <script src="js/pixi.min.js"></script>
+<script>
+//Add the canvas to the HTML document
+var renderer = PIXI.autoDetectRenderer(256, 256);
+var stage = new PIXI.Container();
+document.body.appendChild(renderer.view);
+renderer.autoResize = true;
+renderer.backgroundColor = 0x25284A;
+//Use Pixi's built-in `loader` object to load an image
+PIXI.loader.add("pictures/Box.png").load(setup);
+
+//This `setup` function will run when the image has loaded
+function setup() {
+
+  //Create the `spr_player` sprite from the texture
+  var spr_box = new PIXI.Sprite(
+    PIXI.loader.resources["pictures/Box.png"].texture
+  );
+
+  //Add the cat to the stage
+  stage.addChild(spr_box);
+
+  //Render the stage
+  renderer.render(stage);
+}
+</script>
+  </body>
+</html>
